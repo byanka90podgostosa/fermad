@@ -1,11 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Fernando sou foda
-</body>
-</html>
+from caos import Cachorro, Humano
+from central_de_comando import exibir_menu
+
+cachorros = []
+humanos = []
+
+def criar_cao():
+    nome = input("Nome: ")
+    tamanho = input("Tamanho: ")
+    raca = input("Raça: ")
+    cor = input("Cor: ")
+    sangue = input("Sangue: ")
+    
+    cao = Cachorro(tamanho, raca, cor, nome, coracao=True, sangue=sangue)
+    cachorros.append(cao)
+
+def criar_humano():
+    nome = input("Nome: ")
+    cor = input("Cor: ")
+    instinto = input("Instinto: ")
+    inteligencia = input("Inteligência: ")
+    anda_com_duas_pernas = input("Anda com duas pernas: ")
+    emocoes = input("Emoções: ")
+    coracoes = input("Tem coração: ")
+    sangue = input("Sangue: ")
+    reproducao = input("Reprodução: ")
+    
+    humano = Humano(nome, cor, instinto, inteligencia, anda_com_duas_pernas, emocoes, coracoes, sangue, reproducao)
+    humanos.append(humano)
+
+def exibir_cachorros():
+    for cao in cachorros:
+        print(f"Cachorro: {cao.nome}, {cao.tamanho}, {cao.raca}, {cao.cor}")
+
+def exibir_humanos():
+    for humano in humanos:
+        print(f"Humano: {humano.nome}, {humano.cor}, {humano.instinto}, {humano.inteligencia}")
+
+while True:
+    opcao = exibir_menu()
+
+    if opcao == '0':
+        criar_humano()
+    elif opcao == '1':
+        criar_cao()
+    elif opcao == '2':
+        exibir_cachorros()
+    elif opcao == '3':
+        exibir_humanos()
+    elif opcao == '4':
+        break
+    else:
+        print("Opção inválida, por favor tente novamente.")
